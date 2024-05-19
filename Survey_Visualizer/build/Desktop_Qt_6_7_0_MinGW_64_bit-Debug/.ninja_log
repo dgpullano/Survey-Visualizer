@@ -1,0 +1,17 @@
+# ninja log v5
+13	201	7377922948161300	Survey_Visualizer_autogen/timestamp	68025bd555aa1598
+13	201	7377922948161300	Survey_Visualizer_autogen/mocs_compilation.cpp	68025bd555aa1598
+13	201	7377922948161300	C:/Users/Dillon/Desktop/Survey-Visualizer/Survey_Visualizer/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/Survey_Visualizer_autogen/timestamp	68025bd555aa1598
+13	201	7377922948161300	C:/Users/Dillon/Desktop/Survey-Visualizer/Survey_Visualizer/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/Survey_Visualizer_autogen/mocs_compilation.cpp	68025bd555aa1598
+704	2259	7377922637368056	CMakeFiles/Survey_Visualizer.dir/Survey_Visualizer_autogen/mocs_compilation.cpp.obj	8665420b0b7c38e9
+226	1687	7377922963049343	CMakeFiles/Survey_Visualizer.dir/view.cpp.obj	d6504b8a0e1f057
+711	2309	7377922637862430	CMakeFiles/Survey_Visualizer.dir/main.cpp.obj	b3084050881db935
+1688	1905	7377922965022638	Survey_Visualizer.exe	331cef36dbae3ce7
+219	312	7377922949284579	CMakeFiles/Survey_Visualizer.dir/controller.cpp.obj	1191e0558e3e7360
+4	215	7377923436357809	Survey_Visualizer_autogen/timestamp	68025bd555aa1598
+4	215	7377923436357809	Survey_Visualizer_autogen/mocs_compilation.cpp	68025bd555aa1598
+4	215	7377923436357809	C:/Users/Dillon/Desktop/Survey-Visualizer/Survey_Visualizer/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/Survey_Visualizer_autogen/timestamp	68025bd555aa1598
+4	215	7377923436357809	C:/Users/Dillon/Desktop/Survey-Visualizer/Survey_Visualizer/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/Survey_Visualizer_autogen/mocs_compilation.cpp	68025bd555aa1598
+231	328	7377923437523697	CMakeFiles/Survey_Visualizer.dir/model.cpp.obj	2b8d7089878dd396
+237	1685	7377923451066528	CMakeFiles/Survey_Visualizer.dir/view.cpp.obj	d6504b8a0e1f057
+1686	1927	7377923453101655	Survey_Visualizer.exe	3641a41b2cbddf49
