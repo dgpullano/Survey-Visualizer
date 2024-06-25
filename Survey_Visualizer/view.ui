@@ -23,8 +23,26 @@
      <height>17</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuSurvey_Visualizer">
+    <property name="title">
+     <string>Survey Visualizer</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuImport_Data">
+    <property name="title">
+     <string>Import Data</string>
+    </property>
+    <addaction name="actionFrom_CSV"/>
+   </widget>
+   <addaction name="menuSurvey_Visualizer"/>
+   <addaction name="menuImport_Data"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionFrom_CSV">
+   <property name="text">
+    <string>From .CSV</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
