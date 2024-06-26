@@ -19,7 +19,7 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
-// Initialize View class that expends QMainWindow class:
+// Initialize the View class that extends the QMainWindow class:
 class View : public QMainWindow
 {
     Q_OBJECT
@@ -31,6 +31,9 @@ public:
 
     // Define destructor:
     ~View();
+
+    // Define the getter for sceneView:
+    QGraphicsView* getSceneView() const;
 
 private:
 

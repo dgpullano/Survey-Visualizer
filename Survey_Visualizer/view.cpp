@@ -15,13 +15,22 @@ View::View(QWidget *parent) : QMainWindow(parent), ui(new Ui::View)
     // Use QT Designer function that reads the view.ui file:
     ui->setupUi(this);
 
-    // Create a QGraphicsScene and set the size:
+    // Create a QGraphicsScene, set the size, and set the background color:
     scene = new QGraphicsScene(this);
     scene->setSceneRect(0, 0, 400, 400);
+    scene->setBackgroundBrush(Qt::darkGray);
 
     // Create a QGraphicsView to visualize the scene and set it as the central widget in the main window:
     sceneView = new QGraphicsView(scene, this);
     setCentralWidget(sceneView);
+
+    // Enable scrollbars and drag mode to navigate the scene:
+    sceneView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    sceneView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    sceneView->setDragMode(QGraphicsView::ScrollHandDrag);
+
+    // Set the zoom transformation anchor to the mouse position at the time of zoom:
+    sceneView->setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 
     // Define radius, pen, and brush properties for point visualizations:
     qreal pointRadius = 10.0;
@@ -86,4 +95,10 @@ View::~View()
 {
     delete ui;
     delete scene;
+}
+
+// Define the getter for sceneView:
+QGraphicsView* View::getSceneView() const
+{
+    return sceneView;
 }
