@@ -52,7 +52,7 @@ public:
     ~Model();
 
     // Define function to load in points from a CSV:
-    bool loadPointsFromCSV(const QString &filePath, QString &fileFormat);
+    bool loadPointsFromCSV(const QString &filePath, QString &fileFormat, bool headerPresent);
 
     // Define getters for points and lines:
     const QVector<Point2D>& getPoints2D() const { return points2D; }
