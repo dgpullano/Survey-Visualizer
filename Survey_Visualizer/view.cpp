@@ -8,12 +8,19 @@
 #include <QPen>
 #include <QBrush>
 
+#include <QMessageBox>
+#include <QVBoxLayout>
+
 // Define the View constructor:
 View::View(QWidget *parent) : QMainWindow(parent), ui(new Ui::View)
 {
 
     // Use QT Designer function that reads the view.ui file:
     ui->setupUi(this);
+
+    // Link the "Import Points from CSV" button action in the UI to the import points window creation function:
+    actionImportPointsFromCSV = ui->actionFrom_CSV;
+    connect(actionImportPointsFromCSV, &QAction::triggered, this, &View::importPointsFromCSVClicked);
 
     // Create a QGraphicsScene, set the size, and set the background color:
     scene = new QGraphicsScene(this);
@@ -95,10 +102,57 @@ View::~View()
 {
     delete ui;
     delete scene;
+    // delete dialogImportPointsFromCSV;
 }
 
 // Define the getter for sceneView:
 QGraphicsView* View::getSceneView() const
 {
     return sceneView;
+}
+
+// Define the getter for the "Import Points from CSV" action:
+QAction* View::getImportPointsFromCSVAction() const
+{
+    return ui->actionFrom_CSV;
+}
+
+// Define slot for window pop-up when "Import Points from CSV" button is clicked:
+void View::importPointsFromCSVClicked()
+{
+    // Create the dialog box for importing points from CSV with appropriate title:
+    QDialog *dialogImportPointsFromCSV = new QDialog(this);
+    dialogImportPointsFromCSV->setWindowTitle("Import Points (CSV)");
+
+    // Create button to select file path:
+    QPushButton *buttonSelectCSVFileLocation = new QPushButton("Select Local File:", dialogImportPointsFromCSV);
+
+    // Creat label for file format combo box:
+    QLabel *labelFileFormatSelection = new QLabel("Select Point File Format:", dialogImportPointsFromCSV);
+
+    // Create combo box drop down of possible file formats:
+    QComboBox *comboBoxFileFormats = new QComboBox(dialogImportPointsFromCSV);
+    QStringList fileFormats = {"PNEZD", "PENZD", "PNEZ", "PENZ", "PNED", "PEND", "PNE", "PEN"};
+    for(const QString &fileFormat : fileFormats) {
+        comboBoxFileFormats->addItem(fileFormat);
+    }
+
+    // Create button to import points using the selected criteria or to cancel the process:
+    QDialogButtonBox *buttonImportCancelPoints = new QDialogButtonBox(Qt::Horizontal, dialogImportPointsFromCSV);
+    QPushButton *buttonImportPoints = new QPushButton("Import");
+    QPushButton *buttonCancelImportPoints = new QPushButton("Cancel");
+    buttonImportCancelPoints->addButton(buttonImportPoints, QDialogButtonBox::AcceptRole);
+    buttonImportCancelPoints->addButton(buttonCancelImportPoints, QDialogButtonBox::RejectRole);
+
+    // Define the layout for the widgets defined above:
+    QVBoxLayout *layoutImportPointsFromCSV = new QVBoxLayout(dialogImportPointsFromCSV);
+    layoutImportPointsFromCSV->addWidget(buttonSelectCSVFileLocation, 1);
+    layoutImportPointsFromCSV->addWidget(labelFileFormatSelection, 0, Qt::AlignCenter);
+    layoutImportPointsFromCSV->addWidget(comboBoxFileFormats, 1);
+    layoutImportPointsFromCSV->addWidget(buttonImportCancelPoints, 0, Qt::AlignCenter);
+
+    // Set layout size to fixed and execute dialog box to open:
+    dialogImportPointsFromCSV->adjustSize();
+    dialogImportPointsFromCSV->setFixedSize(dialogImportPointsFromCSV->size());
+    dialogImportPointsFromCSV->exec();
 }

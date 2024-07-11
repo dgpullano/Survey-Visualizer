@@ -3,12 +3,16 @@
 
 // Include necessary QT imports that will be used:
 #include <QMainWindow>
-#include <QMenuBar>
-#include <QToolBar>
-#include <QStatusBar>
-#include <QTextEdit>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+
+#include <QPushButton>
+#include <QLabel>
+#include <QComboBox>
+#include <QDialogButtonBox>
+
+
+
 
 // Initialize Ui namespace:
 QT_BEGIN_NAMESPACE
@@ -35,10 +39,21 @@ public:
     // Define the getter for sceneView:
     QGraphicsView* getSceneView() const;
 
+    // Define the getter for the "Import Points from CSV" action:
+    QAction* getImportPointsFromCSVAction() const;
+
+private slots:
+
+    // Define slot for window pop-up when "Import Points from CSV" is clicked:
+    void importPointsFromCSVClicked();
+
 private:
 
     // Define variable ui which is of type Ui::View:
     Ui::View *ui;
+
+    // Define the action for when the user clicks "Importing Points from CSV" button:
+    QAction *actionImportPointsFromCSV;
 
     // Define scene to hold graphical items:
     QGraphicsScene *scene;

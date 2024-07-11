@@ -5,12 +5,16 @@
 
 // Include necessary QT imports that will be used:
 #include <QGraphicsView>
+#include <QFileDialog>
 
 // Define the Controller constructor:
 Controller::Controller(View *view, Model *model) : QObject(view), view(view), model(model)
 {
     // Install controller as the QT event filter for the view's viewport:
     view->getSceneView()->viewport()->installEventFilter(this);
+
+    // // Connect the "Import Points from CSV" QAction from the View to the slot:
+    // connect(view->getImportPointsFromCSVAction(), &QAction::triggered, this, &Controller::ImportPointsFromCSVClicked);
 }
 
 // Define the Controller destructor:
@@ -54,6 +58,16 @@ void Controller::handleZoom(QWheelEvent *wheelEvent)
     } else {
         view->getSceneView()->scale(1 - scaleChange, 1 - scaleChange);
     }
-
-
 }
+
+// // Define functionality for when "Import Points from CSV" button is clicked in the View:
+// void Controller::ImportPointsFromCSVClicked()
+// {
+//     // Create a dialog so that the user can select the desired local file path:
+//     QString filePath = QFileDialog::getOpenFileName(view, "Import Points from CSV", "", "CSV Files (*.csv);;All Files (*)");
+
+//     if(filePath.isEmpty()) {
+//         return;
+//     }
+//     return;
+// }

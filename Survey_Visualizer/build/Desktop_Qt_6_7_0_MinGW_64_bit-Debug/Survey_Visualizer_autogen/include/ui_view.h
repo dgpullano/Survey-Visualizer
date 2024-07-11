@@ -64,7 +64,7 @@ public:
     void retranslateUi(QMainWindow *View)
     {
         View->setWindowTitle(QCoreApplication::translate("View", "View", nullptr));
-        actionFrom_CSV->setText(QCoreApplication::translate("View", "From .CSV", nullptr));
+        actionFrom_CSV->setText(QCoreApplication::translate("View", "Import Points from CSV", nullptr));
         menuSurvey_Visualizer->setTitle(QCoreApplication::translate("View", "Survey Visualizer", nullptr));
         menuImport_Data->setTitle(QCoreApplication::translate("View", "Import Data", nullptr));
     } // retranslateUi

@@ -40,7 +40,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionFrom_CSV">
    <property name="text">
-    <string>From .CSV</string>
+    <string>Import Points from CSV</string>
    </property>
   </action>
  </widget>
