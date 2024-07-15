@@ -11,6 +11,13 @@
 #include <QMessageBox>
 #include <QVBoxLayout>
 
+#include <QPushButton>
+#include <QLabel>
+#include <QComboBox>
+#include <QDialogButtonBox>
+
+#include <QFileDialog>
+
 // Define the View constructor:
 View::View(QWidget *parent) : QMainWindow(parent), ui(new Ui::View)
 {
@@ -124,10 +131,23 @@ void View::importPointsFromCSVClicked()
     QDialog *dialogImportPointsFromCSV = new QDialog(this);
     dialogImportPointsFromCSV->setWindowTitle("Import Points (CSV)");
 
-    // Create button to select file path:
-    QPushButton *buttonSelectCSVFileLocation = new QPushButton("Select Local File:", dialogImportPointsFromCSV);
+    // Create label to show the file path that has been selected:
+    QLabel *labelSelectedFilePath = new QLabel("No file path selected\n", dialogImportPointsFromCSV);
 
-    // Creat label for file format combo box:
+    // Create button to select file path and connect the slot for the file dialog:
+    QPushButton *buttonSelectCSVFileLocation = new QPushButton("Select Local File:", dialogImportPointsFromCSV);
+    connect(buttonSelectCSVFileLocation, &QPushButton::clicked, [=]() {
+
+        // Call the file dialog function to get the user selected file path:
+        QString selectedFilePath = QFileDialog::getOpenFileName(this, tr("Select CSV File"), "", tr("CSV Files (*.csv);;All Files (*)"));
+
+        // Update the label to display the file path that the user has selected:
+        if(!selectedFilePath.isEmpty()) {
+            labelSelectedFilePath->setText(selectedFilePath + "\n");
+        }
+    });
+
+    // Create label for file format combo box:
     QLabel *labelFileFormatSelection = new QLabel("Select Point File Format:", dialogImportPointsFromCSV);
 
     // Create combo box drop down of possible file formats:
@@ -147,6 +167,7 @@ void View::importPointsFromCSVClicked()
     // Define the layout for the widgets defined above:
     QVBoxLayout *layoutImportPointsFromCSV = new QVBoxLayout(dialogImportPointsFromCSV);
     layoutImportPointsFromCSV->addWidget(buttonSelectCSVFileLocation, 1);
+    layoutImportPointsFromCSV->addWidget(labelSelectedFilePath, 0, Qt::AlignCenter);
     layoutImportPointsFromCSV->addWidget(labelFileFormatSelection, 0, Qt::AlignCenter);
     layoutImportPointsFromCSV->addWidget(comboBoxFileFormats, 1);
     layoutImportPointsFromCSV->addWidget(buttonImportCancelPoints, 0, Qt::AlignCenter);

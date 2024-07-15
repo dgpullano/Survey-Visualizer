@@ -6,14 +6,6 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 
-#include <QPushButton>
-#include <QLabel>
-#include <QComboBox>
-#include <QDialogButtonBox>
-
-
-
-
 // Initialize Ui namespace:
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -44,7 +36,7 @@ public:
 
 private slots:
 
-    // Define slot for window pop-up when "Import Points from CSV" is clicked:
+    // Define slot for window pop-up when "Import Points from CSV" drop down is selected:
     void importPointsFromCSVClicked();
 
 private:
